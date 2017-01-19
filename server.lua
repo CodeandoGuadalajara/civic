@@ -1,5 +1,5 @@
-
 local weblit = require('weblit')
+local user = require "actors/user"
 
 weblit.app
   .bind({host = "127.0.0.1", port = 1337})
@@ -26,17 +26,17 @@ weblit.app
     res.headers["Content-Type"] = "text/html"
   end)
   .route({path = "/solicitud/:folio/watch"}, function (req, res)
-    res.body = {"message":"success"}
+    res.body = '{"message":"success"}'
     res.code = 200
     res.headers["Content-Type"] = "application/json"
   end)
   .route({path = "/solicitud/:folio/stopwatch"}, function (req, res)
-    res.body = {"message":"success"}
+    res.body = '{"message":"success"}'
     res.code = 200
     res.headers["Content-Type"] = "application/json"
   end)
   .route({path = "/user"}, function (req, res)
-    res.body = {"message":"success"}
+    res.body = '{"message":"' .. user(123) .. '"}\n'
     res.code = 200
     res.headers["Content-Type"] = "application/json"
   end)
